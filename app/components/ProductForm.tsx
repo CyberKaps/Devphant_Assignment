@@ -52,11 +52,11 @@ export default function ProductForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="mx-auto max-w-[1100px] px-6 py-4 space-y-4"
+      className="mx-auto max-w-[1100px] px-4 py-3 space-y-3"
     >
       {/* ===== HEADER (INSIDE FORM) ===== */}
       <div className="flex items-center justify-between">
-        <h1 className="text-lg font-semibold">Add New Product</h1>
+        <h1 className="text-base font-semibold">Add New Product</h1>
 
         <div className="flex gap-2">
           <Button type="button" variant="secondary" onClick={() => reset()}>
@@ -115,7 +115,10 @@ export default function ProductForm() {
           </Card>
 
           <Card>
-            <VariantsSection />
+            <VariantsSection
+              baseMrp={watch("mrp") || 0}
+              baseOffer={watch("offer") || 0}
+            />
           </Card>
         </div>
 

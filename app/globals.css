@@ -1,1 +1,6 @@
 @import "tailwindcss";
+
+
+.admin-card {
+  padding: 12px;
+}

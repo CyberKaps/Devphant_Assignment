@@ -38,7 +38,7 @@ export default function RightPanel({
 
       <Card>
         <div className=" p- space-y-3">
-        <h3 className="text-sm font-medium">
+        <h3 className="text-xs font-semibold text-gray-700">
           Product Organization
         </h3>
 
@@ -128,7 +128,7 @@ export default function RightPanel({
 
      
       <Card>
-        <div className="flex justify-around rounded-lg space-y-2">
+        <div className="space-y-2">
         <h3 className="text-sm font-medium">
           Stock Quantity
         </h3>

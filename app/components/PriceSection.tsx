@@ -16,7 +16,7 @@ export default function PriceSection({ register, watch }: PriceSectionProps) {
     mrp - Math.round((mrp * offer) / 100);
 
   return (
-    <div className=" rounded p-4 grid grid-cols-3 gap-4">
+    <div className="grid grid-cols-3 gap-3">
       <Input
         type="number"
         placeholder="MRP"
