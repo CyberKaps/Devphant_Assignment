@@ -100,9 +100,9 @@ export default function ProductForm() {
             <Textarea placeholder="Enter you product description" {...register("description")} rows={4} />
           </Field>
 
-        <Card>
+        
           <ProductImages />
-        </Card>
+        
 
         </Card>
 

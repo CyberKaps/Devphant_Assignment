@@ -11,7 +11,7 @@ export interface PriceSectionProps {
 
 export default function RightPanel({ register, watch }: PriceSectionProps) {
   return (
-    <div className="space-y-4">
+    <div className="space-y-3">
       {/* <h3 className="text-sm font-medium">Product Organization</h3> */}
 
       <Field label="Brand">

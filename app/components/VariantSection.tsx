@@ -45,16 +45,17 @@ export default function VariantsSection() {
               const active = values.includes(value);
 
               return (
+
                 <Button
-                  key={value}
-                  type="button"
-                  variant="secondary"
-                  onClick={() => toggle(value)}
-                  className={`px-2 py-1 text-xs ${
-                    active ? "bg-gray-200" : ""
-                  }`}
-                >
-                  {value}
+                    key={value}
+                    type="button"
+                    variant="secondary"
+                    onClick={() => toggle(value)}
+                    className={`rounded-full px-3 py-1 text-xs ${
+                        active ? "bg-blue-100 text-blue-700" : "bg-gray-100"
+                    }`}
+                    >
+                    {value}
                 </Button>
               );
             })}
