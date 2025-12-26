@@ -2,19 +2,11 @@
 
 import { useForm } from "react-hook-form";
 import { categories } from "../mock";
-
-
-type CategoriesType = {
-  [key: string]: string[];
-};
-const typedCategories: CategoriesType = categories;
 import { Field } from "./ui/Field";
 import { Input } from "./ui/Input";
 import { Select } from "./ui/Select";
 import { Textarea } from "./ui/Textarea";
 import { Button } from "./ui/Button";
-
-
 import PriceSection from "./PriceSection";
 import ProductImages from "./ProductImage";
 import VariantsSection from "./VariantSection";
@@ -34,31 +26,25 @@ export type ProductFormValues = {
   warranty?: string;
   stock?: number;
   variants?: any;
-
 };
 
 export default function ProductForm() {
-  const { register, watch, reset, handleSubmit } = useForm<ProductFormValues>({
-    defaultValues: {
-      seller: "",
-      offer: 0,
-      category: "",
-      subCategory: "",
-      description: "",
-      title: "",
-    },
-  });
+  const { register, watch, reset, handleSubmit } =
+    useForm<ProductFormValues>({
+      defaultValues: {
+        seller: "",
+        offer: 0,
+        category: "",
+        subCategory: "",
+        description: "",
+        title: "",
+      },
+    });
 
   const category = watch("category");
 
-  function onSubmit(data: any) {
-    const existing = JSON.parse(
-      localStorage.getItem("products") || "[]"
-    );
-    localStorage.setItem(
-      "products",
-      JSON.stringify([...existing, data])
-    );
+  function onSubmit(data: ProductFormValues) {
+    console.log("SUBMITTED:", data); // ✅ will fire now
     alert("Product saved");
     reset();
   }
@@ -66,70 +52,75 @@ export default function ProductForm() {
   return (
     <form
       onSubmit={handleSubmit(onSubmit)}
-      className="grid grid-cols-1 lg:grid-cols-[1fr_360px] gap-6"
+      className="mx-auto max-w-[1100px] px-6 py-4 space-y-4"
     >
-      
-      <div className="space-y-4">
-        <Card>
-          <Field label="Title" required>
-            <Input placeholder="Add product title" {...register("title", { required: true })} />
-          </Field>
+      {/* ===== HEADER (INSIDE FORM) ===== */}
+      <div className="flex items-center justify-between">
+        <h1 className="text-lg font-semibold">Add New Product</h1>
 
-          <div className="grid grid-cols-2 gap-4">
-            <Field label="Category" required>
-              <Select {...register("category")}>
-                <option value="">Select category</option>
-                {Object.keys(categories).map((c) => (
-                  <option key={c}>{c}</option>
-                ))}
-              </Select>
+        <div className="flex gap-2">
+          <Button type="button" variant="secondary" onClick={() => reset()}>
+            Cancel
+          </Button>
+          <Button type="submit">Save</Button>
+        </div>
+      </div>
+
+      {/* ===== BODY ===== */}
+      <div className="grid grid-cols-1 lg:grid-cols-[1fr_300px] gap-6">
+        {/* LEFT */}
+        <div className="space-y-3">
+          <Card>
+            <Field label="Title" required>
+              <Input
+                placeholder="Add product title"
+                {...register("title", { required: true })}
+              />
             </Field>
 
-            <Field label="Sub Category" required>
-              <Select {...register("subCategory")}>
-                <option value="">Select sub-category</option>
-                {category &&
-                  typedCategories[category]?.map((sc) => (
-                    <option key={sc}>{sc}</option>
+            <div className="grid grid-cols-2 gap-4">
+              <Field label="Category" required>
+                <Select {...register("category")}>
+                  <option value="">Select category</option>
+                  {Object.keys(categories).map((c) => (
+                    <option key={c}>{c}</option>
                   ))}
-              </Select>
+                </Select>
+              </Field>
+
+              <Field label="Sub Category" required>
+                <Select {...register("subCategory")}>
+                  <option value="">Select sub-category</option>
+                  {category &&
+                    categories[category as keyof typeof categories]?.map((sc) => (
+                      <option key={sc}>{sc}</option>
+                    ))}
+                </Select>
+              </Field>
+            </div>
+
+            <Field label="Description" required>
+              <Textarea
+                rows={3}
+                placeholder="Enter your product description"
+                {...register("description")}
+              />
             </Field>
-          </div>
 
-          <Field label="Description" required>
-            <Textarea placeholder="Enter you product description" {...register("description")} rows={4} />
-          </Field>
+            <ProductImages />
+          </Card>
 
-        
-          <ProductImages />
-        
+          <Card>
+            <PriceSection register={register} watch={watch} />
+          </Card>
 
-        </Card>
+          <Card>
+            <VariantsSection />
+          </Card>
+        </div>
 
-
-      
-        <Card>
-          <PriceSection register={register} watch={watch} />
-        </Card>
-
-        <Card>
-          <VariantsSection />
-        </Card>
-      </div>
-
-      <div className="space-y-">
-          <RightPanel register={register} watch={watch} />
-      </div>
-
-      <div className="col-span-full flex gap-3">
-        <Button type="submit">Save</Button>
-        <Button
-          type="button"
-          variant="secondary"
-          onClick={() => reset()}
-        >
-          Cancel
-        </Button>
+        {/* RIGHT */}
+        <RightPanel register={register} watch={watch} />
       </div>
     </form>
   );

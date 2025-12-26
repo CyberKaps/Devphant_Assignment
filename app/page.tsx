@@ -4,10 +4,8 @@ import { useForm } from "react-hook-form";
 import ProductForm from "./components/ProductForm";
 export default function Home() {
   return (
-    <div className="p-6">
-      <h1 className="text-xl font-semibold mb-4">
-        Add New Product
-      </h1>
+    <div className="mx-auto max-w-[1100px] px-6 py-4">
+      
 
       <ProductForm />
     </div>

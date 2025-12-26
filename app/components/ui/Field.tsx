@@ -8,7 +8,7 @@ export function Field({
   children: React.ReactNode;
 }) {
   return (
-    <div className="space-y-1">
+    <div className="space-y-0.5">
       <label className="text-xs font-medium text-gray-600">
         {label}
         {required && <span className="text-red-500">*</span>}

@@ -17,3 +17,4 @@ export const productSchema = z.object({
   seller: z.string(),
   stock: z.number(),
 });
+  

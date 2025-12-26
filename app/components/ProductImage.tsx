@@ -23,7 +23,7 @@ export default function ProductImages() {
       
       {images.length === 0 && (
         <label className="cursor-pointer">
-          <div className="h-32 rounded-md bg-gray-100 flex flex-col items-center justify-center text-center gap-1">
+          <div className="h-24 rounded-md bg-gray-100 flex flex-col items-center justify-center text-center gap-1">
             <div className="w-8 h-8 border border-red-500 text-red-500 rounded flex items-center justify-center text-lg">
               +
             </div>
