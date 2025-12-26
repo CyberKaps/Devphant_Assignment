@@ -117,10 +117,8 @@ export default function ProductForm() {
         </Card>
       </div>
 
-      <div className="space-y-4">
-        <Card title="Product Organization">
+      <div className="space-y-">
           <RightPanel register={register} watch={watch} />
-        </Card>
       </div>
 
       <div className="col-span-full flex gap-3">

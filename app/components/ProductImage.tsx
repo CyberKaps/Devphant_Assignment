@@ -16,7 +16,7 @@ export default function ProductImages() {
   }
 
   return (
-    <div className="rounded-lg bg-white space-y-3">
+    <div className="rounded-lg bg-white space-y-">
         
       <Field children label="Product Images" required />
 
