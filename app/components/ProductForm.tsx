@@ -40,7 +40,7 @@ export type ProductFormValues = {
 export default function ProductForm() {
   const { register, watch, reset, handleSubmit } = useForm<ProductFormValues>({
     defaultValues: {
-      seller: "Sagar Sports Club",
+      seller: "",
       offer: 0,
       category: "",
       subCategory: "",

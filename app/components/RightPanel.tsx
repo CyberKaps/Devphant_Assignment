@@ -44,12 +44,12 @@ export default function RightPanel({
 
         <Field label="Brand Manufacturer">
           <Input
-            placeholder="Adidas"
+            placeholder="Enter brand name"
             {...register("brand")}
           />
         </Field>
 
-        <Field label="Add Warranty">
+        <Field label="Select time period">
           <Select {...register("warranty")}>
             <option value="">Select</option>
             <option value="6 Months">6 Months</option>
@@ -59,7 +59,7 @@ export default function RightPanel({
 
         <Field label="Seller Name">
           <Input
-            placeholder="Sagar Sports Club"
+            placeholder="Enter Seller Name"
             {...register("seller")}
           />
         </Field>
