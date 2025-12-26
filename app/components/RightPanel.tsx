@@ -1,9 +1,15 @@
+import { UseFormRegister, UseFormWatch } from "react-hook-form";
 import { Field } from "./ui/Field";
 import { Input } from "./ui/Input";
 import { Select } from "./ui/Select";
+import { ProductFormValues } from "./ProductForm";
 
+export interface PriceSectionProps {
+  register: UseFormRegister<ProductFormValues>;
+  watch: UseFormWatch<ProductFormValues>;
+}
 
-export default function RightPanel({ register }) {
+export default function RightPanel({ register, watch }: PriceSectionProps) {
   return (
     <div className="space-y-4">
       {/* <h3 className="text-sm font-medium">Product Organization</h3> */}

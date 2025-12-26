@@ -2,6 +2,12 @@
 
 import { useForm } from "react-hook-form";
 import { categories } from "../mock";
+
+
+type CategoriesType = {
+  [key: string]: string[];
+};
+const typedCategories: CategoriesType = categories;
 import { Field } from "./ui/Field";
 import { Input } from "./ui/Input";
 import { Select } from "./ui/Select";
@@ -15,11 +21,31 @@ import VariantsSection from "./VariantSection";
 import RightPanel from "./RightPanel";
 import { Card } from "./Card";
 
+export type ProductFormValues = {
+  title?: string;
+  category?: string;
+  subCategory?: string;
+  description?: string;
+  seller: string;
+  offer: number;
+  mrp?: number;
+  sellingPrice?: number;
+  brand?: string;
+  warranty?: string;
+  stock?: number;
+  variants?: any;
+
+};
+
 export default function ProductForm() {
-  const { register, watch, reset, handleSubmit } = useForm({
+  const { register, watch, reset, handleSubmit } = useForm<ProductFormValues>({
     defaultValues: {
       seller: "Sagar Sports Club",
       offer: 0,
+      category: "",
+      subCategory: "",
+      description: "",
+      title: "",
     },
   });
 
@@ -63,7 +89,7 @@ export default function ProductForm() {
               <Select {...register("subCategory")}>
                 <option value="">Select sub-category</option>
                 {category &&
-                  categories[category]?.map((sc) => (
+                  typedCategories[category]?.map((sc) => (
                     <option key={sc}>{sc}</option>
                   ))}
               </Select>
@@ -93,7 +119,7 @@ export default function ProductForm() {
 
       <div className="space-y-4">
         <Card title="Product Organization">
-          <RightPanel register={register} />
+          <RightPanel register={register} watch={watch} />
         </Card>
       </div>
 

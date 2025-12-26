@@ -17,7 +17,8 @@ export default function ProductImages() {
 
   return (
     <div className="rounded-lg bg-white space-y-3">
-      <Field label="Product Images" required />
+        
+      <Field children label="Product Images" required />
 
       
       {images.length === 0 && (

@@ -1,7 +1,14 @@
+import { UseFormRegister, UseFormWatch } from "react-hook-form";
+import { ProductFormValues } from "./ProductForm";
 import { Input } from "./ui/Input";
 import { Select } from "./ui/Select";
 
-export default function PriceSection({ register, watch }) {
+export interface PriceSectionProps {
+  register: UseFormRegister<ProductFormValues>;
+  watch: UseFormWatch<ProductFormValues>;
+}
+
+export default function PriceSection({ register, watch }: PriceSectionProps) {
   const mrp = watch("mrp") || 0;
   const offer = watch("offer") || 0;
 

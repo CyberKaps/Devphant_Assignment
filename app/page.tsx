@@ -1,6 +1,5 @@
 "use client";
 
-import { Input } from "@/app/components/ui/Input";
 import { useForm } from "react-hook-form";
 import ProductForm from "./components/ProductForm";
 export default function Home() {

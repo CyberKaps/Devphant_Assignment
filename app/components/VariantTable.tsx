@@ -1,4 +1,8 @@
-export default function VariantTable({ values }) {
+interface VariantTableProps {
+  values: string[];
+}
+
+export default function VariantTable({ values }: VariantTableProps) {
   return (
     <table className="w-full text-xs border">
       <thead>
