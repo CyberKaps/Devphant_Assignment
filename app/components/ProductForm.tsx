@@ -18,6 +18,9 @@ import VariantsSection from "./VariantSection";
 import RightPanel from "./RightPanel";
 import { saveProduct } from "@/app/utils/productStorage";
 import toast from "react-hot-toast";
+import { useRouter } from "next/navigation";
+
+
 
 
 export type ProductFormValues = {
@@ -44,6 +47,9 @@ export type ProductFormValues = {
 };
 
 export default function ProductForm() {
+
+  const router = useRouter();
+
   const methods = useForm<ProductFormValues>({
     resolver: zodResolver(productSchema),
     mode: "onChange",
@@ -73,6 +79,8 @@ export default function ProductForm() {
   const category = watch("category");
 
   function onSubmit(data: ProductFormValues) {
+
+
   saveProduct(data);
 
   console.log("SAVED TO LOCAL STORAGE:", data);
@@ -83,6 +91,8 @@ export default function ProductForm() {
   },
   });
   reset();
+
+  router.push("/products");
 }
 
   return (
