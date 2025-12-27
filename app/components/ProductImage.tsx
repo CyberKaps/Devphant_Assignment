@@ -1,26 +1,32 @@
 "use client";
 
-import { useState } from "react";
+import { useFormContext } from "react-hook-form";
 import { Field } from "./ui/Field";
 import { Input } from "./ui/Input";
+import { ProductFormValues } from "./ProductForm";
 
 export default function ProductImages() {
-  const [images, setImages] = useState<string[]>([]);
+  const { watch, setValue } =
+    useFormContext<ProductFormValues>();
+
+  const images = watch("images") || [];
 
   function handleUpload(e: React.ChangeEvent<HTMLInputElement>) {
     const file = e.target.files?.[0];
     if (!file) return;
 
     const url = URL.createObjectURL(file);
-    setImages((prev) => [...prev, url]);
+
+    setValue("images", [...images, url], {
+      shouldValidate: true,
+    });
   }
 
   return (
-    <div className="rounded-lg bg-white space-y-">
-        
+    <div className="rounded-lg bg-white space-y-2">
       <Field children label="Product Images" required />
 
-      
+      {/* EMPTY STATE */}
       {images.length === 0 && (
         <label className="cursor-pointer">
           <div className="h-24 rounded-md bg-gray-100 flex flex-col items-center justify-center text-center gap-1">
@@ -44,7 +50,7 @@ export default function ProductImages() {
         </label>
       )}
 
-      
+      {/* PREVIEW STATE */}
       {images.length > 0 && (
         <div className="flex gap-3 flex-wrap">
           {images.map((img, index) => (
