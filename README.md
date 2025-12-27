@@ -1,4 +1,4 @@
-# 🛒 Devphant Assignment (Next.js)
+# Devphant Assignment (Next.js)
 
 This assignment demonstrates form handling, schema validation, local storage persistence, and reusable component design.
 
@@ -34,14 +34,13 @@ This assignment demonstrates form handling, schema validation, local storage per
 - Displays:
   - Product title & category
   - Price, discount & stock
-  - Tags (up to 3)
+  - Tags
   - Created date
 - Empty state when no products exist
 - Navigation back to Add Product page
 
 ### 🔔 UX Enhancements
 - Toast notifications on save
-- Consistent red action theme
 - Reusable `Card` component
 - Proper disabled & loading states
 
