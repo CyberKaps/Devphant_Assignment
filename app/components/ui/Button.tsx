@@ -9,7 +9,7 @@ export function Button({
   return (
     <button
       {...props}
-      className={`px-4 py-2 rounded-full text-sm font-medium ${
+      className={`px-2 py-2 rounded-full text-sm font-medium ${
         variant === "primary"
           ? "bg-gradient-to-r from-red-600 to-red-800 text-white"
           : "border border-gray-300 text-gray-700 bg-white"
