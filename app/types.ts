@@ -12,3 +12,9 @@ export type VariantRow = {
 
 
 
+import { ProductFormValues } from "@/app/components/ProductForm";
+
+export type StoredProduct = ProductFormValues & {
+  id: string;
+  createdAt: string;
+};

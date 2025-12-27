@@ -16,6 +16,9 @@ import PriceSection from "./PriceSection";
 import ProductImages from "./ProductImage";
 import VariantsSection from "./VariantSection";
 import RightPanel from "./RightPanel";
+import { saveProduct } from "@/app/utils/productStorage";
+import toast from "react-hot-toast";
+
 
 export type ProductFormValues = {
   title: string;
@@ -63,16 +66,24 @@ export default function ProductForm() {
     register,
     watch,
     reset,
-    formState: { errors, isValid },
+    handleSubmit,
+    formState: { errors, isValid, isSubmitting },
   } = methods;
 
   const category = watch("category");
 
   function onSubmit(data: ProductFormValues) {
-    console.log("SUBMITTED:", data);
-    alert("Product saved");
-    reset();
-  }
+  saveProduct(data);
+
+  console.log("SAVED TO LOCAL STORAGE:", data);
+  toast.success("Product saved successfully!", {
+    iconTheme: {
+    primary: "#dc2626",   
+    secondary: "#fee2e2",
+  },
+  });
+  reset();
+}
 
   return (
     <FormProvider {...methods}>
@@ -111,8 +122,8 @@ export default function ProductForm() {
             </Button>
 
            
-            <Button type="submit" className="cursor-pointer" disabled={!isValid}>
-              Save
+            <Button type="submit" className="cursor-pointer" disabled={!isValid || isSubmitting}>
+              {isSubmitting ? "Saving..." : "Save"}
             </Button>
           </div>
         </div>
